@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int l = 0, r = height.size() - 1, water = 0;
+        int lm = height[0], rm = height.back();
+
+        while(l <= r) {
+            if(lm < rm) {
+                lm = max(lm,height[l]);
+                water += lm - height[l];
+                l++;
+            } else {
+                rm = max(rm,height[r]);
+                water += rm - height[r];
+                r--;
+            }
+        }
+        
+        return water;
+    }
+};
